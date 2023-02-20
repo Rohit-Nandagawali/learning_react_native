@@ -6,24 +6,33 @@ import {
   Text,
   View,
   Button,
-  StyleSheet
+  StyleSheet,
+  TextInput,
+  Pressable
 } from 'react-native';
 
 
 function App(): JSX.Element {
+  const [name,setName]=useState("")
   return (
-    <View style={{ flex: 1, alignItems: "center"}}>
-      {/* inline styling */}
-      <Text style={{ fontSize: 40, fontWeight: 'bold' }}>Inline Styles</Text>
+    <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
+      <Text style={{ fontSize: 30, fontWeight: 'bold',margin:10}}>Your Name is {name}</Text>
+      <TextInput 
+      style={Internalstyles.TextInput}
+      value={name}
+      placeholder='Enter Your name'
+      onChangeText={(text)=>setName(text)}
+      />
 
-      {/* Internal Styling */}
-      <Text style={Internalstyles.textBox}>Internal Styles</Text>
+      <Pressable style={Internalstyles.Button} onPress={()=>setName("")}>
+        <Text style={{fontSize:20}}>Clear</Text>
+      </Pressable>
 
-      {/* External Styling */}
-      <Text style={externalStyle.textBox}>External Styles</Text>
-     
-      {/* internal + external + inline styling */}
-      <Text style={[Internalstyles.textBox,externalStyle.textBox,{backgroundColor:"green",borderStyle:"solid",borderColor:"red",borderWidth:5}]}>hybrid Styles</Text>
+    {/* there is no style property to <Button> use <Presseble> */}
+      {/* <Button 
+      title='Clear'
+      onPress={()=>setName("")}/> */}
+
     </View>
   );
 }
@@ -31,14 +40,28 @@ function App(): JSX.Element {
 
 // defining Internal styling using StyleSheet.create()
 const Internalstyles=StyleSheet.create({
-  textBox:{
+  TextInput:{
     color:"white",
-    backgroundColor:"blue",
-    fontSize:30,
+    fontSize:20,
+    fontFamily:"Roboto",
+    padding:15,
+    width:300,
+    borderRadius:20,
+    borderWidth:2,
+    borderColor:"green"
+  }
+  ,
+  Button:{
+    color:"white",
+    fontSize:25,
     fontFamily:"Roboto",
     padding:15,
     margin:10,
+    backgroundColor:"green",
     borderRadius:20,
+    alignItems:"center",
+    textAlign:"center",
+    borderColor:"green"
   }
   
 })
