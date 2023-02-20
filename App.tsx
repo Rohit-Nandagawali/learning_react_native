@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Text,
   View,
@@ -14,15 +14,18 @@ import {
 
 
 function App(): JSX.Element {
+  const [name, setName] = useState("Rohit")
+
   function handlePress() {
-      console.warn("someone pressed me")
+    name==="Rohit"?setName("User"):setName("Rohit")
+      // console.warn("someone pressed me")
       
   }
   return (
     <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
-      <Text style={{fontSize:40,fontWeight:'bold' }}>Hello World !</Text>
+      <Text style={{fontSize:40,fontWeight:'bold' }}>Hello {name}</Text>
       <Text style={{color:"#0000ff", fontSize:20}}>This app is created by Rohit Nandagawali</Text>
-      <Button title='Press Me' onPress={handlePress}></Button>
+      <Button title='Change name' onPress={handlePress}></Button>
     </View>
   );
 }
