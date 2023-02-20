@@ -76,7 +76,7 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Hello chhaya">
+          <Section title="This is first change">
             Edit <Text style={styles.highlight}>App.tsx</Text> my name is rohit i am learning react native
           </Section>
           <Section title="Hello rohit nandagawali">
