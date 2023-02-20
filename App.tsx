@@ -1,48 +1,45 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
 
 import React, { useState } from 'react';
+// importing external styling 
+import externalStyle from './externalStyle';
 import {
   Text,
   View,
-  Button
+  Button,
+  StyleSheet
 } from 'react-native';
 
 
 function App(): JSX.Element {
-  const [name, setName] = useState("Rohit")
-
-  function handlePress() {
-    name === "Rohit" ? setName("User") : setName("Rohit")
-    // console.warn("someone pressed me")
-
-  }
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={{ fontSize: 40, fontWeight: 'bold' }}>Hello {name}</Text>
-      <Text style={{ color: "#0000ff", fontSize: 20 }}>This app is created by Rohit Nandagawali</Text>
-      <Button title='Change name' onPress={handlePress}></Button>
+    <View style={{ flex: 1, alignItems: "center"}}>
+      {/* inline styling */}
+      <Text style={{ fontSize: 40, fontWeight: 'bold' }}>Inline Styles</Text>
 
-      <User name="Rohit" age={50}/>
+      {/* Internal Styling */}
+      <Text style={Internalstyles.textBox}>Internal Styles</Text>
+
+      {/* External Styling */}
+      <Text style={externalStyle.textBox}>External Styles</Text>
+     
+      {/* internal + external + inline styling */}
+      <Text style={[Internalstyles.textBox,externalStyle.textBox,{backgroundColor:"green",borderStyle:"solid",borderColor:"red",borderWidth:5}]}>hybrid Styles</Text>
     </View>
   );
 }
-type data={
-  name:String,
-  age:Number
-}
-const User = (props:data) => {
-  return (
 
-    <View style={{ backgroundColor: "pink", padding: 5, margin: 5 }}>
-      <Text>Name : { props.name}</Text>
-      
-    </View>
-  )
-}
 
+// defining Internal styling using StyleSheet.create()
+const Internalstyles=StyleSheet.create({
+  textBox:{
+    color:"white",
+    backgroundColor:"blue",
+    fontSize:30,
+    fontFamily:"Roboto",
+    padding:15,
+    margin:10,
+    borderRadius:20,
+  }
+  
+})
 export default App;
