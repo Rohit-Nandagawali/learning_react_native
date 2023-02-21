@@ -9,60 +9,47 @@ import {
   TouchableHighlight,
   Modal,
   Button,
-  
+  Pressable,
+
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
-  const [show, setShow]=useState(false)
+  const [text, setText] = useState("")
   return (
-    <View style={Internalstyles.main}>
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>TouchableHighlight</Text>
-      <Modal 
-      transparent={true}
-      visible={show}
-      animationType="slide"
-       >
-        <View style={Internalstyles.centerView}>
-          <View style={Internalstyles.modalView}>
-            <Text style={{fontSize:30,marginBottom:10}}>
-              This is modal
-            </Text>
-            <Button onPress={()=>setShow(false)} title='Close'></Button>
-          </View>
-        </View>
-      </Modal>
-      
-      <TouchableHighlight onPress={()=>setShow(true)} style={Internalstyles.Button}>
-        <Text>Press</Text>
-      </TouchableHighlight>
+    <View >
+      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>{text}</Text>
+
+      <Pressable 
+      style={Internalstyles.btn}
+      onPress={()=>setText("pressed")}
+      onLongPress={()=>setText(" long pressed")}
+      // onPressIn={()=>setText("Pressed in")}
+      // onPressOut={()=>setText("pressed out")}
+    
+      >
+        <Text style={{textAlign:"center",color:"white"}}>Press</Text>
+      </Pressable>
+
 
 
     </View>
   );
 }
 
- 
+
 
 // defining Internal styling using StyleSheet.create()
 const Internalstyles = StyleSheet.create({
-  main:{
-    flex:1,
-    
-  },
-  centerView:{
-    flex:1,
-    alignItems:"center",
-    justifyContent:"center"
-    
-  },
-  modalView:{
-    backgroundColor:"white",
-    padding:40,
-    borderRadius:10,
-    shadowColor:"blue",
-    elevation:20,
+  
+  btn: {
+    backgroundColor: "red",
+    padding: 10,
+    borderRadius: 10,
+    shadowColor: "blue",
+    elevation: 20,
+    margin:20,
 
   },
   TextInput: {
@@ -87,10 +74,10 @@ const Internalstyles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     borderColor: "green",
-    shadowColor:"red",
-    elevation:20,
-    shadowOpacity:4
-    
+    shadowColor: "red",
+    elevation: 20,
+    shadowOpacity: 4
+
 
   },
 
