@@ -36,12 +36,16 @@ function App(): JSX.Element {
 
   return (
     <View >
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>FlateList</Text>
-      <FlatList
+      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>List using map()</Text>
+      {/* <FlatList
         data={userData}
         renderItem={items=><Text style={Internalstyles.Button}>{items.item.name}</Text>}
         keyExtractor={item=>item.name}
-        />
+        /> */}
+
+        {userData.map((item)=><Text style={Internalstyles.Button} key={item.id} >{item.name}</Text>)}
+
+
     
     </View>
   );
