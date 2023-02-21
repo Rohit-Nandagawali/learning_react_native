@@ -7,20 +7,27 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
+  ActivityIndicator,
   
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
+
+  const [show,setShow]=useState(false)
  
   return (
     <View >
       <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>TouchableHighlight</Text>
       
-      <TouchableHighlight style={Internalstyles.Button}>
+      <TouchableHighlight onPress={()=>setShow(true)} style={Internalstyles.Button}>
         <Text>Primary</Text>
       </TouchableHighlight>
+
+      {/* <ActivityIndicator size={"large"} color="red" animating={show}/> */}
+
+      {show?<ActivityIndicator size={"large"} color="red"/>:null}
 
     </View>
   );
