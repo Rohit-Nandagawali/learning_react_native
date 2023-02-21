@@ -15,22 +15,28 @@ import {
 
 
 function App(): JSX.Element {
-
-  const [count, setCount]=useState(0)
-  useEffect(()=>{
-    console.warn("useEffect called"); //on state change
-    
-  },[]) //use [] to call only at componentDidMount
+  const [display, setDisplay] =useState(false)
+ 
   return (
     <View >
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>useEffect count {count}</Text>
+      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>Mount Unmount Component</Text>
       
-      <Button title='Count' onPress={()=>setCount(count+1) }></Button>
-    
+      <Button title='Count' onPress={()=>setDisplay(!display)} ></Button>
+
+      {display?<UserComponent/>:null}
+
     </View>
   );
 }
 
+const UserComponent = () => {
+  return ( 
+    <View style={Internalstyles.Button}>
+      <Text style={{color:"white"}}>User component</Text>
+    </View>
+   );
+}
+ 
 
 // defining Internal styling using StyleSheet.create()
 const Internalstyles = StyleSheet.create({
