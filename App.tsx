@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // importing external styling 
 import externalStyle from './externalStyle';
 import {
@@ -8,44 +8,24 @@ import {
   StyleSheet,
   TextInput,
   Pressable,
-  FlatList
+  FlatList,
+  Button
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
 
-  const userData=[
-    {
-      id:1,
-      name:"rohit"
-    },
-    {
-      id:2,
-      name:"mohit"
-    },
-    {
-      id:3,
-      name:"gaurav"
-    },
-    {
-      id:4,
-      name:"saurav"
-    },
-  ]
-
+  const [count, setCount]=useState(0)
+  useEffect(()=>{
+    console.warn("useEffect called"); //on state change
+    
+  },[]) //use [] to call only at componentDidMount
   return (
     <View >
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>List using map()</Text>
-      {/* <FlatList
-        data={userData}
-        renderItem={items=><Text style={Internalstyles.Button}>{items.item.name}</Text>}
-        keyExtractor={item=>item.name}
-        /> */}
-
-        {userData.map((item)=><Text style={Internalstyles.Button} key={item.id} >{item.name}</Text>)}
-
-
+      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>useEffect count {count}</Text>
+      
+      <Button title='Count' onPress={()=>setCount(count+1) }></Button>
     
     </View>
   );
