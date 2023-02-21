@@ -7,27 +7,37 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  ActivityIndicator,
+  Modal,
+  Button,
   
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
-
-  const [show,setShow]=useState(false)
- 
+  const [show, setShow]=useState(false)
   return (
-    <View >
+    <View style={Internalstyles.main}>
       <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>TouchableHighlight</Text>
+      <Modal 
+      transparent={true}
+      visible={show}
+      animationType="slide"
+       >
+        <View style={Internalstyles.centerView}>
+          <View style={Internalstyles.modalView}>
+            <Text style={{fontSize:30,marginBottom:10}}>
+              This is modal
+            </Text>
+            <Button onPress={()=>setShow(false)} title='Close'></Button>
+          </View>
+        </View>
+      </Modal>
       
       <TouchableHighlight onPress={()=>setShow(true)} style={Internalstyles.Button}>
-        <Text>Primary</Text>
+        <Text>Press</Text>
       </TouchableHighlight>
 
-      {/* <ActivityIndicator size={"large"} color="red" animating={show}/> */}
-
-      {show?<ActivityIndicator size={"large"} color="red"/>:null}
 
     </View>
   );
@@ -37,6 +47,24 @@ function App(): JSX.Element {
 
 // defining Internal styling using StyleSheet.create()
 const Internalstyles = StyleSheet.create({
+  main:{
+    flex:1,
+    
+  },
+  centerView:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center"
+    
+  },
+  modalView:{
+    backgroundColor:"white",
+    padding:40,
+    borderRadius:10,
+    shadowColor:"blue",
+    elevation:20,
+
+  },
   TextInput: {
     color: "black",
     fontSize: 20,
