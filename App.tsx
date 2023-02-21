@@ -10,28 +10,20 @@ import {
   Modal,
   Button,
   Pressable,
+  StatusBar,
 
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
-  const [text, setText] = useState("")
   return (
     <View >
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>{text}</Text>
-
-      <Pressable 
-      style={Internalstyles.btn}
-      onPress={()=>setText("pressed")}
-      onLongPress={()=>setText(" long pressed")}
-      // onPressIn={()=>setText("Pressed in")}
-      // onPressOut={()=>setText("pressed out")}
-    
-      >
-        <Text style={{textAlign:"center",color:"white"}}>Press</Text>
-      </Pressable>
-
+     <StatusBar
+     backgroundColor={"red"}
+     barStyle="light-content"
+     hidden={true}
+     />
 
 
     </View>
