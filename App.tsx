@@ -21,7 +21,7 @@ function App(): JSX.Element {
     <View >
       <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>Mount Unmount Component</Text>
       
-      <Button title='Count' onPress={()=>setDisplay(!display)} ></Button>
+      <Button title='Hide/show' onPress={()=>setDisplay(!display)} ></Button>
 
       {display?<UserComponent/>:null}
 
@@ -30,6 +30,10 @@ function App(): JSX.Element {
 }
 
 const UserComponent = () => {
+  useEffect(()=>{
+    return ()=>console.warn("Unmount"); //this is called when unmount, funtion inside function
+    
+  })
   return ( 
     <View style={Internalstyles.Button}>
       <Text style={{color:"white"}}>User component</Text>
