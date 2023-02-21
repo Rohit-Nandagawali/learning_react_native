@@ -13,65 +13,56 @@ import {
   StatusBar,
 
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-
+const Stack =createNativeStackNavigator()
 function App(): JSX.Element {
   return (
-    <View >
-     <StatusBar
-     backgroundColor={"red"}
-     barStyle="light-content"
-     hidden={true}
-     />
-
-
-    </View>
+   <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name='Home' component={Home}/>
+      <Stack.Screen name='Login' component={Login}/>
+    </Stack.Navigator>
+   </NavigationContainer>
   );
 }
 
+const Home = (props:any) => {
+  return ( 
+    <View style={Internalstyles.center}>
+      <Text style={Internalstyles.text}>Home Screen</Text>
+      <Button  title='Go to Login' onPress={()=>props.navigation.navigate("Login")}/>
+    </View>
+   );
+}
+
+const Login = () => {
+  return ( 
+    <View style={Internalstyles.center}>
+      <Text style={Internalstyles.text}>Login Screen</Text>
+    </View>
+   );
+}
 
 
 // defining Internal styling using StyleSheet.create()
 const Internalstyles = StyleSheet.create({
   
-  btn: {
-    backgroundColor: "red",
+  text: {
+   
     padding: 10,
     borderRadius: 10,
-    shadowColor: "blue",
-    elevation: 20,
+    fontSize:30,
     margin:20,
 
   },
-  TextInput: {
-    color: "black",
-    fontSize: 20,
-    fontFamily: "Roboto",
-    padding: 15,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    borderRadius: 20,
-    borderWidth: 2,
-    borderColor: "green"
+  center:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center"
   }
-  ,
-  Button: {
-    color: "white",
-    fontSize: 20,
-    padding: 15,
-    margin: 10,
-    backgroundColor: "red",
-    borderRadius: 20,
-    alignItems: "center",
-    textAlign: "center",
-    borderColor: "green",
-    shadowColor: "red",
-    elevation: 20,
-    shadowOpacity: 4
-
-
-  },
+  
 
 })
 export default App;
