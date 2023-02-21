@@ -7,71 +7,42 @@ import {
   View,
   StyleSheet,
   TextInput,
-  Pressable
+  Pressable,
+  FlatList
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const [email, setEmail] = useState("")
-  const [display, setDisplay] = useState(false)
 
-  const handleClear=()=>{
-    setDisplay(false)
-    setName("")
-    setPassword("")
-    setEmail("")
-  }
+  const userData=[
+    {
+      id:1,
+      name:"rohit"
+    },
+    {
+      id:2,
+      name:"mohit"
+    },
+    {
+      id:3,
+      name:"gaurav"
+    },
+    {
+      id:4,
+      name:"saurav"
+    },
+  ]
 
   return (
     <View >
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>Enter Your data</Text>
-      <TextInput
-        style={Internalstyles.TextInput}
-        value={name}
-        placeholder='Enter Your Name'
-        onChangeText={(text) => setName(text)}
-      />
-      <TextInput
-        style={Internalstyles.TextInput}
-        value={password}
-        secureTextEntry={true}
-        placeholder='Enter Password'
-        onChangeText={(text) => setPassword(text)}
-      />
-      <TextInput
-        style={Internalstyles.TextInput}
-        value={email}
-        placeholder='Enter email'
-        onChangeText={(text) => setEmail(text)}
-      />
-
-      <Pressable style={[Internalstyles.Button]} onPress={() => {setName("") ;setDisplay(true)}}>
-        <Text style={{ fontSize: 20, color: "white", fontFamily: "Roboto", }}>Submit</Text>
-      </Pressable>
-
-      <Pressable style={[Internalstyles.Button, { backgroundColor: "red" }]} onPress={handleClear}>
-        <Text style={{ fontSize: 20, color: "white", fontFamily: "Roboto", }}>Clear</Text>
-      </Pressable>
-
-      {display ?
-        <View>
-          <Text style={{ fontSize: 20 }}>
-            Your name is {name},
-            Your password is {password},
-            Your email is {email}
-          </Text>
-        </View> : null
-      }
-
-
-      {/* there is no style property to <Button> use <Presseble> */}
-      {/* <Button 
-      title='Clear'
-      onPress={()=>setName("")}/> */}
-
+      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>FlateList</Text>
+      <FlatList
+        data={userData}
+        renderItem={items=><Text style={Internalstyles.Button}>{items.item.name}</Text>}
+        keyExtractor={item=>item.name}
+        />
+    
     </View>
   );
 }
@@ -92,7 +63,8 @@ const Internalstyles = StyleSheet.create({
   }
   ,
   Button: {
-
+    color: "white",
+    fontSize: 20,
     padding: 15,
     margin: 10,
     backgroundColor: "green",
