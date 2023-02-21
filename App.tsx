@@ -6,40 +6,26 @@ import {
   Text,
   View,
   StyleSheet,
-  TextInput,
-  Pressable,
-  FlatList,
-  Button
+  TouchableHighlight,
+  
 } from 'react-native';
 
 
 
 function App(): JSX.Element {
-  const [display, setDisplay] =useState(false)
  
   return (
     <View >
-      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>Mount Unmount Component</Text>
+      <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 40, alignSelf: 'center' }}>TouchableHighlight</Text>
       
-      <Button title='Hide/show' onPress={()=>setDisplay(!display)} ></Button>
-
-      {display?<UserComponent/>:null}
+      <TouchableHighlight style={Internalstyles.Button}>
+        <Text>Primary</Text>
+      </TouchableHighlight>
 
     </View>
   );
 }
 
-const UserComponent = () => {
-  useEffect(()=>{
-    return ()=>console.warn("Unmount"); //this is called when unmount, funtion inside function
-    
-  })
-  return ( 
-    <View style={Internalstyles.Button}>
-      <Text style={{color:"white"}}>User component</Text>
-    </View>
-   );
-}
  
 
 // defining Internal styling using StyleSheet.create()
@@ -61,11 +47,15 @@ const Internalstyles = StyleSheet.create({
     fontSize: 20,
     padding: 15,
     margin: 10,
-    backgroundColor: "green",
+    backgroundColor: "red",
     borderRadius: 20,
     alignItems: "center",
     textAlign: "center",
     borderColor: "green",
+    shadowColor:"red",
+    elevation:20,
+    shadowOpacity:4
+    
 
   },
 
