@@ -20,10 +20,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack =createNativeStackNavigator()
 function App(): JSX.Element {
 
-  const handlePress = ()=>{
-    console.warn("Button pressed");
-    
-  }
+
 
   return (
    <NavigationContainer>
@@ -40,7 +37,7 @@ function App(): JSX.Element {
       }}>
       <Stack.Screen name='Home' component={Home} 
      options={{
-       headerTitle:()=><Button onPress={handlePress} title='Left'/>,
+       headerTitle:()=><Button  title='Left'/>,
        headerRight:()=><Custom/>,
       headerStyle:{
         backgroundColor:"lightblue",
@@ -62,24 +59,30 @@ const Custom = () => {
   return ( 
     <View>
       <TextInput placeholder='Input Name'/>
+
     </View>
    );
 }
 
 
 const Home = (props:any) => {
+  const name="rohitt"
+  const age=19
   return ( 
     <View style={Internalstyles.center}>
       <Text style={Internalstyles.text}>Home Screen</Text>
-      <Button  title='Go to Login' onPress={()=>props.navigation.navigate("Login")}/>
+      <Button  title='Go to Login' onPress={()=>props.navigation.navigate("Login",{name,age})}/>
     </View>
    );
 }
 
-const Login = () => {
+const Login = (props:any) => {
+  const {name,age}=props.route.params
   return ( 
     <View style={Internalstyles.center}>
       <Text style={Internalstyles.text}>Login Screen</Text>
+      <Text style={Internalstyles.text}>{name} </Text>
+      <Text style={Internalstyles.text}>{age} </Text>
     </View>
    );
 }

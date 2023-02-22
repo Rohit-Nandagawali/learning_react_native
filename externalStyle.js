@@ -1,15 +1,20 @@
 import { StyleSheet } from "react-native";
 
-export default externalStyle=StyleSheet.create({
-    textBox:{
-
-        color:"white",
-        backgroundColor:"red",
-        fontSize:20,
-        fontFamily:"Roboto",
-        padding:15,
-        margin:10,
-        borderRadius:15,
-        fontStyle:"italic"
+export default Internalstyles = StyleSheet.create({
+  
+    text: {
+     
+      padding: 10,
+      borderRadius: 10,
+      fontSize:30,
+      margin:20,
+  
+    },
+    center:{
+      flex:1,
+      justifyContent:"center",
+      alignItems:"center"
     }
-})
+    
+  
+  })
