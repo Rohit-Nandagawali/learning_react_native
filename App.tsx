@@ -11,6 +11,7 @@ import {
   Button,
   Pressable,
   StatusBar,
+  TextInput,
 
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -18,6 +19,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack =createNativeStackNavigator()
 function App(): JSX.Element {
+
+  const handlePress = ()=>{
+    console.warn("Button pressed");
+    
+  }
+
   return (
    <NavigationContainer>
     <Stack.Navigator  screenOptions={{
@@ -33,14 +40,15 @@ function App(): JSX.Element {
       }}>
       <Stack.Screen name='Home' component={Home} 
      options={{
-       
+       headerTitle:()=><Button onPress={handlePress} title='Left'/>,
+       headerRight:()=><Custom/>,
       headerStyle:{
         backgroundColor:"lightblue",
       },
       headerTintColor:"blue"
       ,
       headerTitleStyle:{
-        fontSize:20
+        fontSize:30
       }
     }}
       />
@@ -49,6 +57,15 @@ function App(): JSX.Element {
    </NavigationContainer>
   );
 }
+
+const Custom = () => {
+  return ( 
+    <View>
+      <TextInput placeholder='Input Name'/>
+    </View>
+   );
+}
+
 
 const Home = (props:any) => {
   return ( 
